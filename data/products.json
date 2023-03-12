@@ -5,35 +5,35 @@
         "name": "Golf Polo",
         "price": 30,
         "category": "apparel",
-        "image": "../content/merchandise-polo.png"
+        "image": "content/merchandise-polo.png"
       },
       {
         "id": 2,
         "name": "Golf Sleeve",
         "price": 50,
         "category": "apparel",
-        "image": "../content/merchandise-sleeve.png"
+        "image": "content/merchandise-sleeve.png"
       },
       {
         "id": 3,
         "name": "Golf Towel",
         "price": 50,
         "category": "accessories",
-        "image": "../content/merchandise-towel.png"
+        "image": "content/merchandise-towel.png"
       },
       {
         "id": 4,
         "name": "Golf Balls",
         "price": 10,
         "category": "accesories",
-        "image": "../content/merchandise-balls.png"
+        "image": "content/merchandise-golfballs.png"
       },
       {
         "id": 5,
         "name": "Golf Cap",
         "price": 20,
         "category": "apparel",
-        "image": "../content/merchandise-cap.png"
+        "image": "content/merchandise-cap.png"
       }
     ]
   }

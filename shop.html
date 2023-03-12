@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Webshop</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
   </head>
+  <style>
+    .shop-items {
+      margin-bottom: 30px;
+    }
+  </style>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container px-4 px-lg-5">
         <a href="index.html">
-          <img src="../content/logo.png" width="80" height="80" alt="">
+          <img src="content/logo.png" width="80" height="80" alt="">
         </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,7 +41,7 @@
       </div>
     </nav>
     <!-- Header-->
-    <header class="bg-dark py-5 header-with-image" style="background-image: url('../content/header-shop.png'); background-size: cover; background-position: center center;">
+    <header class="bg-dark py-5 header-with-image" style="background-image: url('content/header-shop.png'); background-size: cover; background-position: center center;">
       <div class="container px-4 px-lg-5 my-5">
           <div class="text-center text-white">
               <h1 class="display-4 fw-bolder">Shop in style</h1>
@@ -116,7 +121,7 @@
       <script>
         // fetch the products from the JSON file
         async function loadProducts() {
-        const response = await fetch("../data/products.json");
+        const response = await fetch("data/products.json");
         const data = await response.json();
         const products = data.products;
         console.log(products)
@@ -171,11 +176,13 @@
                 shopItem.classList.add("col");
                 shopItem.innerHTML = `
                 <div class="card">
-                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                    <div class="card-img-wrapper">
+                        <img src="${product.image}" class="card-img-top-shop" alt="${product.name}">
+                    </div>
                     <div class="card-body">
-                    <h5 class="card-title">${product.name}</h5>
-                    <p class="card-text">$${product.price.toFixed(2)}</p>
-                    <button class="btn btn-primary addToCart" data-product="${product.id}">Add to cart</button>
+                        <h5 class="card-title">${product.name}</h5>
+                        <p class="card-text">$${product.price.toFixed(2)}</p>
+                        <button class="btn btn-primary addToCart" data-product="${product.id}">Add to cart</button>
                     </div>
                 </div>
                 `;
@@ -281,9 +288,23 @@
         const checkoutButton = document.getElementById("checkoutButton");
         checkoutButton.addEventListener("click", checkout);
         
-        loadProducts()
+        renderProducts();
         }
+        loadProducts();
       </script>
   </body>
+  <footer class="bg-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 text-center text-md-start">
+          <p>&copy; 2023 IE Golf Club</p>
+        </div>
+        <div class="col-12 col-md-6 text-center text-md-end">
+          <a href="#" class="me-4 text-reset">Privacy Policy</a>
+          <a href="#" class="text-reset">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>
           

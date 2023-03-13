@@ -67,8 +67,12 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="price">Price Range:</label>
-              <input type="range" class="form-range" id="price">
+              <label for="min-price">Minimum Price:</label>
+              <input type="number" id="min-price" class="form-control" min="0">
+            </div>
+            <div class="form-group">
+              <label for="max-price">Maximum Price:</label>
+              <input type="number" id="max-price" class="form-control" min="0">
             </div>
           </div>
           <div class="col-md-9">
@@ -127,22 +131,23 @@
         console.log(products)
 
         function renderProducts() {
-            const filter = document.getElementById("filter").value.toLowerCase();
-            const category = document.getElementById("category").value;
-            const price = document.getElementById("price").value;
+          const filter = document.getElementById("filter").value.toLowerCase();
+          const category = document.getElementById("category").value;
+          const minPrice = Number(document.getElementById("min-price").value);
+          const maxPrice = Number(document.getElementById("max-price").value);
 
-            const filteredProducts = products.filter(product => {
-                if (category && product.category !== category) {
-                    return false;
-                }
-                if (price && product.price > price) {
-                    return false;
-                }
-                if (filter && !product.name.toLowerCase().includes(filter)) {
-                    return false;
-                }
-                return true;
-            });
+          const filteredProducts = products.filter(product => {
+            if (category && product.category !== category) {
+              return false;
+            }
+            if ((minPrice && product.price < minPrice) || (maxPrice && product.price > maxPrice)) {
+              return false;
+            }
+            if (filter && !product.name.toLowerCase().includes(filter)) {
+              return false;
+            }
+            return true;
+          });
 
             const shopItems = document.querySelector('.shop-items');
             let cartItems = {};
@@ -181,7 +186,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">${product.name}</h5>
-                        <p class="card-text">$${product.price.toFixed(2)}</p>
+                        <p class="card-text">€${product.price.toFixed(2)}</p>
                         <button class="btn btn-primary addToCart" data-product="${product.id}">Add to cart</button>
                     </div>
                 </div>
@@ -244,9 +249,9 @@
             const removeButton = document.createElement("button");
 
             nameCell.textContent = product;
-            priceCell.textContent = `$${products.find(p => p.name === product).price.toFixed(2)}`;
+            priceCell.textContent = `€${products.find(p => p.name === product).price.toFixed(2)}`;
             quantityCell.textContent = cartItems[product];
-            totalCell.textContent = `$${itemTotal.toFixed(2)}`;
+            totalCell.textContent = `€${itemTotal.toFixed(2)}`;
 
             removeButton.textContent = "Remove";
             removeButton.classList.add("btn", "btn-sm", "btn-danger");
@@ -266,7 +271,7 @@
             }
 
             const cartTotal = document.getElementById("cartTotal");
-            cartTotal.textContent = `$${total.toFixed(2)}`;
+            cartTotal.textContent = `€${total.toFixed(2)}`;
 
             const cartBadge = document.getElementById("cartBadge");
             let totalItems = 0;

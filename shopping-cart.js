@@ -137,4 +137,12 @@ async function loadProducts() {
     updateCart();
     renderProducts();
 }
+// Set the timeout to 24 hours (in milliseconds)
+const timeout =  60 * 60 * 1000;
+
+// Reset the local storage after the timeout
+setTimeout(() => {
+  localStorage.removeItem('cartItems');
+}, timeout);
+
 loadProducts();

@@ -4,7 +4,7 @@ This repository contains the code for the javascript project. The project's obje
 with a product view, filtering, and shopping cart functionality. This includes querying the product portfolio 
 through an api (json) and deploying the webshop via GitHub Pages:
 
-[IE Golf Club Webshop](https://mistermakc.github.io)
+Try it out: [IE Golf Club Webshop](https://mistermakc.github.io)
 
 The webship is designed as followed:
 1. Home (information about the purpose)

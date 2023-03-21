@@ -24,6 +24,8 @@ The webshop is designed as followed:
 3. Shopping cart (shopping-cart.html)
   - the shopping cart where the user can add more or remove products
 
+<img width="1502" alt="Screenshot 2023-03-20 at 17 54 04" src="https://user-images.githubusercontent.com/60471340/226412260-54a00b79-c9fe-4214-a0e5-7c866e253841.png">
+
 ## Repository structure
 
 The structure of this repository is as follows:
@@ -31,5 +33,3 @@ The structure of this repository is as follows:
 - CSS (css requirements)
 - Data (product data)
 - Individual html webpages and corresponding js-scripts for interactivity
-
-<img width="1502" alt="Screenshot 2023-03-20 at 17 54 04" src="https://user-images.githubusercontent.com/60471340/226412260-54a00b79-c9fe-4214-a0e5-7c866e253841.png">

@@ -13,7 +13,7 @@ async function loadProducts() {
 		productsContainer.innerHTML = '';
 
 		// render each product in the cart
-		filteredProducts.forEach(product => {
+		filteredProducts.forEach((product, index) => {
 			const productHtml = `
               <!-- Single item -->
               <div class="row">
@@ -41,14 +41,14 @@ async function loadProducts() {
                   <!-- Quantity -->
                   <div class="d-flex justify-content-between align-items-center">
                     <button class="btn btn-lg btn-primary me-2 minus" data-product-minus="${product.id}">-</button>
-                    <input type="number" min="1" value="${cartItems[product.id]}" class="form-control form-control-lg form-control-sm text-center" data-product-id="${product.id}" onchange="changeQuantity(event)">
+                    <input type="number" min="1" value="${cartItems[product.id]}" class="form-control form-control-lg form-control-sm text-center" data-product-id="${product.id}">
                     <button class="btn btn-lg btn-primary ms-2 plus" data-product-plus="${product.id}">+</button>
                   </div>
     
                   <!-- Quantity -->
     
                   <!-- Price -->
-                  <p class="text-start text-md-center">
+                  <p class="text-start text-md-center" data-price-for-product="${product.id}">
                     <strong>€${product.price * cartItems[product.id]}.00</strong>
                   </p>
                   <!-- Price -->
@@ -56,7 +56,7 @@ async function loadProducts() {
               </div>
               <!-- Seperation line -->
             
-                <hr class="my-4" />
+				${index < filteredProducts.length - 1 ? '<hr class="my-4" />' : ''}
             
               <!-- Seperation line -->
             `;
@@ -76,7 +76,39 @@ async function loadProducts() {
 				removeFromCart(productId);
 			});
 		});
+		// add event listeners to all quantity input fields
+		document.querySelectorAll('input[data-product-id]').forEach((input) => {
+			input.addEventListener('change', changeQuantity);
+			input.addEventListener('input', handleInvalidInput);
+		});
 	}
+
+	// handle invalid input
+	const handleInvalidInput = (event) => {
+		const input = event.target;
+		const currentValue = input.value;
+		const previousValue = input.getAttribute('data-previous-value') || 1;
+
+		// Check if the input is a positive number
+		if (!/^\d+$/.test(currentValue) || currentValue == 0) {
+			input.value = previousValue;
+		} else {
+			input.setAttribute('data-previous-value', currentValue);
+		}
+	};
+
+	// update the product quantity
+	const updateProductQuantity = (productId) => {
+		const quantityInput = document.querySelector(`input[data-product-id="${productId}"]`);
+		const priceElement = document.querySelector(`p[data-price-for-product="${productId}"]`);
+
+		if (!quantityInput || !priceElement) return;
+
+		const product = products.find(p => p.id === productId);
+
+		quantityInput.value = cartItems[productId];
+		priceElement.innerHTML = `<strong>€${product.price * cartItems[productId]}.00</strong>`;
+	};
 
 	// add product to the cart
 	const addToCart = (productId) => {
@@ -89,37 +121,50 @@ async function loadProducts() {
 		} else {
 			cartItems[product.id] = 1;
 		}
-		// save cart items to local storage
 		localStorage.setItem('cartItems', JSON.stringify(cartItems));
-		refreshCart();
-
+		updateUI(productId);
+		updateCart();
+		updateCartBadge();
 	};
 
 	// Function to remove a product from the cart
 	const removeFromCart = (productId) => {
-		// Find the product in the products array based on the provided productId
 		const product = products.find(p => p.id === productId);
-
-		// If the product is not found, return
 		if (!product) {
 			return;
 		}
-
-		// If the product is in the cart, decrement the quantity
 		if (cartItems[product.id]) {
 			cartItems[product.id]--;
-
-			// If the quantity reaches zero, remove the product from the cart
 			if (cartItems[product.id] === 0) {
 				delete cartItems[product.id];
 			}
 		}
-
-		// Save the updated cart items to local storage
 		localStorage.setItem('cartItems', JSON.stringify(cartItems));
+		updateUI(productId);
+		updateCart();
+		updateCartBadge();
+	};
 
-		// Refresh the cart display
-		refreshCart();
+	// adapt to quantity input
+	const changeQuantity = (event) => {
+		const productId = Number(event.target.getAttribute("data-product-id"));
+		const newQuantity = Number(event.target.value);
+		const product = products.find(p => p.id === productId);
+
+		if (!product) {
+			return;
+		}
+
+		if (newQuantity > 0) {
+			cartItems[productId] = newQuantity;
+		} else {
+			delete cartItems[productId];
+		}
+
+		localStorage.setItem('cartItems', JSON.stringify(cartItems));
+		updateUI(productId);
+		updateCart();
+		updateCartBadge();
 	};
 
 	// Function to update the cart total price
@@ -137,6 +182,15 @@ async function loadProducts() {
 		subTotal.innerHTML = `€${total.toFixed(2)}`;
 	};
 
+	// update ui for specific product only once
+	const updateUI = (productId) => {
+		if (!cartItems.hasOwnProperty(productId) || cartItems[productId] === 0) {
+			renderProducts();
+		} else {
+			updateProductQuantity(productId);
+		}
+	};
+
 	// Function to update the cart badge with the total number of items
 	const updateCartBadge = () => {
 		const cartBadge = document.querySelector("#cartBadge");
@@ -152,13 +206,6 @@ async function loadProducts() {
 		cartOverview.innerHTML = totalItems;
 	};
 
-	// Function to refresh the cart by updating the total price, rendering products, and updating the cart badge
-	const refreshCart = () => {
-		updateCart();
-		renderProducts();
-		updateCartBadge();
-	};
-
 	// Update cart badge and cart total price, and render products on page load
 	updateCartBadge();
 	updateCart();
@@ -166,7 +213,7 @@ async function loadProducts() {
 
 }
 
-// Set the timeout to 24 hours (in milliseconds)
+// Set the timeout to 1 hour (in milliseconds)
 const timeout = 60 * 60 * 1000;
 
 // Reset the local storage after the timeout

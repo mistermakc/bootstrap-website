@@ -54,6 +54,11 @@ async function loadProducts() {
                   <!-- Price -->
                 </div>
               </div>
+              <!-- Seperation line -->
+            
+                <hr class="my-4" />
+            
+              <!-- Seperation line -->
             `;
 			productsContainer.insertAdjacentHTML('beforeend', productHtml);
 		});

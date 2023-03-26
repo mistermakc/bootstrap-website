@@ -47,7 +47,7 @@ async function loadProducts() {
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">€${product.price.toFixed(2)}</p>
-                    <button class="btn btn-primary addToCart" data-product="${product.id}">Add to cart</button>
+                    <button class="btn btn-primary btn-lg addToCart" data-product="${product.id}">Add to cart</button>
                 </div>
             </div>
             `;

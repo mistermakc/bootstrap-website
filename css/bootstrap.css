@@ -320,7 +320,7 @@ textarea {
 }
 
 .shop-items {
-  min-height: 300px; /* or any other value that you think is appropriate */
+  min-height: 300px;
   margin-bottom: 30px;
 }
 
@@ -4265,11 +4265,12 @@ textarea.form-control-lg {
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid #f8f9fa;
+  border: 0px solid #f8f9fa;
   border-radius: 0.25rem;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
 }
@@ -4377,7 +4378,7 @@ textarea.form-control-lg {
 .card-img-wrapper {
   width: 100%;
   height: 250px;
-  overflow: hidden;
+  position: relative;
 }
 
 .card-img-top-shop {

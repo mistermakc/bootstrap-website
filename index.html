@@ -1,93 +1,104 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-      <div class="container px-4 px-lg-5">
-        <a href="index.html">
-          <img src="content/logo.png" width="80" height="80" alt="">
-        </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item">
-                  <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="shop.html">Shop</a>
-                </li>
-              </ul>
-              <form class="d-flex">
-                <a href="shopping-cart.html">
+   <head>
+      <!-- set character set to UTF-8 -->
+      <meta charset="utf-8">
+      <!-- set viewport -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- set page title -->
+      <title>Welcome | IE Golf Club</title>
+      <!-- set page description -->
+      <meta name="description" content="Visit our brand new online shop and order IE Golf Club branded balls, towels, polos, and much more.">
+      <!-- set favicon -->
+      <link rel="shortcut icon" type="image/jpg" href="content/favicon.png"/>
+      <!-- load Bootstrap CSS -->
+      <link rel="stylesheet" href="css/bootstrap.css">
+   </head>
+   <body>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+         <div class="container px-4 px-lg-5">
+            <!-- link to homepage with logo -->
+            <a href="index.html">
+            <img src="content/logo.png" width="70" height="70" alt="">
+            </a>
+            <!-- navbar toggle button for small screens -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <!-- navbar menu -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <!-- navbar items on the left side -->
+               <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                  <!-- home link -->
+                  <li class="nav-item">
+                     <a class="nav-link" href="index.html">Home</a>
+                  </li>
+                  <!-- shop link -->
+                  <li class="nav-item">
+                     <a class="nav-link" href="shop.html">Shop</a>
+                  </li>
+               </ul>
+               <!-- cart button on the right side -->
+               <form class="d-flex">
+                  <a href="shopping-cart.html">
                   <button class="btn btn-outline-primary" type="button">
-                    <i class="bi-cart-fill me-1"></i>
-                    Cart
-                    <span class="badge bg-primary text-white ms-1 rounded-pill" id="cartBadge">0</span>
+                  <i class="bi-cart-fill me-1"></i>
+                  Cart
+                  <span class="badge bg-primary text-white ms-1 rounded-pill" id="cartBadge">0</span>
                   </button>
-                </a>
-              </form>
-          </div>
-      </div>
-    </nav>
-  <!-- Header-->
-  <header class="bg-dark py-5 header-with-image" style="background-image: url('content/header-main.png'); background-size: cover; background-position: center center;">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Welcome</h1>
-            <p class="lead fw-normal text-white-50 mb-0">We provide you with elegant golf apparel</p>
-        </div>
-    </div>
-  </header>
-  <main class="container">
-    <section class="h-100 gradient-custom">
-        <div class="container py-3">
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <div class="p-5 my-4 bg-light rounded-3" style="box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);">
-                  <h1>Get your golf equipment!</h1>
-                  <p class="lead">Visit our brand new online shop and order IE Golf Club branded balls, towels, polos, and much more. We are looking forward to seeing you soon at the <a href="https://e.cglink.me/2kb/r300086992" class="text-primary" target="_blank">IE Open Championship</a>. At la faisanera golf club, you can challenge yourself, your friends, and win the championship as a team!</p>
-                  <p style="margin-top: 30px;"><a href="shop.html" class="btn btn-primary btn-lg">Shop now</a></p>
-                </div>
-              </div>
+                  </a>
+               </form>
             </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-    <script>
-      let cartItems = JSON.parse(localStorage.getItem("cartItems"));
-      const updateCartBadge = () => {
-          const cartBadge = document.querySelector("#cartBadge");
-          let totalItems = 0;
-          for (const item in cartItems) {
-            totalItems += cartItems[item];
-          }
-          cartBadge.innerHTML = totalItems;
-        };
-        updateCartBadge();
-    </script>
-  </body>
-  <footer class="footer-dynamic bg-light py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-6 text-center text-md-start">
-          <p>&copy; 2023 IE Golf Club</p>
-        </div>
-        <div class="col-12 col-md-6 text-center text-md-end">
-          <a href="#" class="me-4 text-reset">Privacy Policy</a>
-          <a href="#" class="text-reset">Terms of Use</a>
-        </div>
+         </div>
+      </nav>
+      <!-- Header section -->
+      <header class="bg-dark py-5 header-with-image" style="background-image: url('content/header-main.png'); background-size: cover; background-position: center center;">
+         <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+               <!-- header title -->
+               <h1 class="display-4 fw-bolder">Welcome</h1>
+               <!-- header subtitle -->
+               <p class="lead fw-normal text-white-50 mb-0">We provide you with elegant golf apparel</p>
+            </div>
+         </div>
+      </header>
+      <!-- Main content -->
+      <main class="container">
+         <section class="h-100 gradient-custom">
+            <div class="container py-3">
+               <div class="container">
+                  <div class="row">
+                     <div class="col">
+                        <div class="p-5 my-4 bg-light rounded-3" style="box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);">
+                           <!-- main content heading -->
+                           <h1>Get your golf equipment!</h1>
+                           <!-- main content description -->
+                           <p class="lead">Visit our brand new online shop and order IE Golf Club branded balls, towels, polos, and much more. We are looking forward to seeing you soon at the <a href="https://e.cglink.me/2kb/r300086992" class="text-primary" target="_blank">IE Open Championship</a>. At la faisanera golf club, you can challenge yourself, your friends, and win the championship as a team!</p>
+                           <!-- main content call-to-action button -->
+                           <p style="margin-top: 30px;"><a href="shop.html" class="btn btn-primary btn-lg">Shop now</a></p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </main>
+      <!-- load index.js script -->
+      <script src="index.js"></script>
+   </body>
+   <!-- Footer section -->
+   <footer class="footer-dynamic bg-light py-4">
+      <div class="container">
+         <div class="row">
+            <div class="col-12 col-md-6 text-center text-md-start">
+               <!-- footer text -->
+               <p>&copy; 2023 IE Golf Club</p>
+            </div>
+            <div class="col-12 col-md-6 text-center text-md-end">
+               <!-- footer links -->
+               <a href="#" class="me-4 text-reset">Privacy Policy</a>
+               <a href="#" class="text-reset">Terms of Use</a>
+            </div>
+         </div>
       </div>
-    </div>
-  </footer>
+   </footer>
 </html>
-

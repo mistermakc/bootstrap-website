@@ -90,7 +90,7 @@ async function loadProducts() {
 		const previousValue = input.getAttribute('data-previous-value') || 1;
 
 		// Check if the input is a positive number
-		if (!/^\d+$/.test(currentValue) || currentValue == 0) {
+		if (!/^\d+$/.test(currentValue)) {
 			input.value = previousValue;
 		} else {
 			input.setAttribute('data-previous-value', currentValue);

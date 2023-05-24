@@ -30,16 +30,16 @@ The webshop is designed as followed:
 
 The structure of this repository is as follows:
 
-Content: Holds the pictures
-CSS: Contains CSS files for styling the webshop
-Data: Contains product data
-Individual HTML webpages and corresponding JavaScript scripts for interactivity
+- Content: Holds the pictures
+- CSS: Contains CSS files for styling the webshop
+- Data: Contains product data
+- Individual HTML webpages and corresponding JavaScript scripts for interactivity
 
 ## Modules Used
 
 This webshop has been developed using the following technologies:
 
-CSS: For styling the webpages
-JavaScript: For adding interactivity to the webpages
-HTML: For structuring the webpages
-Bootstrap: A CSS framework used for developing responsive and mobile-first websites
+- CSS: For styling the webpages
+- JavaScript: For adding interactivity to the webpages
+- HTML: For structuring the webpages
+- Bootstrap: A CSS framework used for developing responsive and mobile-first websites

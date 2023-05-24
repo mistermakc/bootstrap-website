@@ -1,8 +1,8 @@
-# Javascript project
+# Webshop for the IE Golf Club
 
-This repository contains the code for the javascript project. The project's objective is to establish a webshop 
-with a product view, filtering, and shopping cart functionality. This includes querying the product portfolio 
-through a pre-defined json and deploying the webshop via GitHub Pages. 
+This repository holds the code for the IE Golf Club's webshop. The objective of this project is to establish 
+an online store featuring a product view, filtering, and shopping cart functionality. This entails querying 
+the product portfolio through a pre-defined JSON and deploying the webshop via GitHub Pages.
 
 Try it out: [IE Golf Club Webshop](https://mistermakc.github.io)
 
@@ -26,10 +26,20 @@ The webshop is designed as followed:
 
 <img width="1502" alt="Screenshot 2023-03-20 at 17 54 04" src="https://user-images.githubusercontent.com/60471340/226412260-54a00b79-c9fe-4214-a0e5-7c866e253841.png">
 
-## Repository structure
+## Repository Structure
 
 The structure of this repository is as follows:
-- Content (pictures)
-- CSS (css requirements)
-- Data (product data)
-- Individual html webpages and corresponding js-scripts for interactivity
+
+Content: Holds the pictures
+CSS: Contains CSS files for styling the webshop
+Data: Contains product data
+Individual HTML webpages and corresponding JavaScript scripts for interactivity
+
+## Modules Used
+
+This webshop has been developed using the following technologies:
+
+CSS: For styling the webpages
+JavaScript: For adding interactivity to the webpages
+HTML: For structuring the webpages
+Bootstrap: A CSS framework used for developing responsive and mobile-first websites

@@ -18,11 +18,11 @@ This could be the webshop for the following products:
 
 The webshop is designed as followed:
 1. Home (index.html)
-  - the main page which welcomes the user
+  - The main page which welcomes the user
 2. Shop (shop.html)
-  - the webshop where the user can filter and add products
+  - The webshop where the user can filter and add products
 3. Shopping cart (shopping-cart.html)
-  - the shopping cart where the user can add more or remove products
+  - The shopping cart where the user can add more or remove products
 
 <img width="1502" alt="Screenshot 2023-03-20 at 17 54 04" src="https://user-images.githubusercontent.com/60471340/226412260-54a00b79-c9fe-4214-a0e5-7c866e253841.png">
 
